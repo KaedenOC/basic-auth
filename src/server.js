@@ -13,7 +13,7 @@ app.use(express.json());
 app.use(router);
 
 // Process FORM intput and put the data on req.body
-app.use(express.urlencoded({ extended: true }));
+// app.use(express.urlencoded({ extended: true }));
 
 app.get('/', (req, res, next) => {
   res.status(200).send('proof of life');
