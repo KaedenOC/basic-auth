@@ -1,10 +1,13 @@
 'use strict';
 
+const express = require('express');
 const bcrypt = require('bcrypt');
 const base64 = require('base-64');
+const Users = require('./users-model');
+const router = express.router();
 
 
-app.post('/signup', async (req, res) => {
+router.post('/signup', async (req, res) => {
 
   try {
     req.body.password = await bcrypt.hash(req.body.password, 10);
@@ -17,7 +20,7 @@ app.post('/signup', async (req, res) => {
 // Signin Route -- login with username and password
 // test with httpie
 // http post :3000/signin -a john:foo
-app.post('/signin', async (req, res) => {
+router.post('/signin', async (req, res) => {
 
   /*
     req.headers.authorization is : "Basic am9objpmb28="
