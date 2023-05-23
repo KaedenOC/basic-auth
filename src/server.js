@@ -4,7 +4,7 @@ const express = require('express');
 const cors = require('cors');
 const router = require('./auth/router');
 
-
+router.use(express.urlencoded({ extended: true }));
 
 
 const app = express();
@@ -26,4 +26,4 @@ app.get('/', (req, res, next) => {
 
 const start = (port) => app.listen(port, () => console.log('listening on port:', port));
 
-module.exports = { start, app };
+module.exports = { app, start };

@@ -7,9 +7,9 @@
 // const base64 = require('base-64');
 // const { Sequelize, DataTypes } = require('sequelize');
 require('dotenv').config();
-const PORT = process.env.PORT || 3002;
-const { sequelize } = require('./src/models');
+const { sequelize } = require('./src/auth/models');
 const { start } = require('./src/server');
+const PORT = process.env.PORT || 3002;
 // make sure our tables are created, start up the HTTP server.
 sequelize.sync()
   .then(() => {
