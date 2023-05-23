@@ -2,11 +2,11 @@
 
 const bcrypt = require('bcrypt');
 const base64 = require('base-64');
-const { Users } = require('../../models');
+const { userModel } = require('../../models');
 
 
 
-module.exports = async (req, res, next) => {
+const basicAuth = async (req, res, next) => {
 
   /*
       req.headers.authorization is : "Basic am9objpmb28="
@@ -31,12 +31,12 @@ module.exports = async (req, res, next) => {
     3. Either we're valid or we throw an error
   */
   try {
-    const user = await Users.findOne({ where: { username: username } });
+    const user = await userModel.findOne({ where: { username: username } });
     const valid = await bcrypt.compare(password, user.password);
     if (valid) {
       req.user = user;
       next();
-      res.status(200).json(req.user);
+      // res.status(200).json(req.user);
     }
     else {
       throw new Error('Invalid User');
@@ -45,4 +45,4 @@ module.exports = async (req, res, next) => {
 
 };
 
-
+module.exports = basicAuth;
