@@ -2,6 +2,7 @@
 
 const express = require('express');
 const cors = require('cors');
+const router = require('./auth/router');
 
 
 
@@ -9,6 +10,7 @@ const cors = require('cors');
 const app = express();
 app.use(cors());
 app.use(express.json());
+app.use(router);
 
 // Process FORM intput and put the data on req.body
 app.use(express.urlencoded({ extended: true }));
