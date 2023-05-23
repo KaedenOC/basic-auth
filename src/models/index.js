@@ -2,8 +2,7 @@
 
 const { Sequelize, DataTypes } = require('sequelize');
 require('dotenv').config();
-const Users = require('./users-model');
-
+const userModel = require('./users-model');
 
 
 const DATABASE_URL = process.env.NODE_ENV === 'test'
@@ -14,22 +13,12 @@ const DATABASE_URL = process.env.NODE_ENV === 'test'
 const sequelize = new Sequelize(DATABASE_URL);
 
 //create our working and connected user model
-const userModel = Users(sequelize, DataTypes);
-
-
-
-
-
-
-
-
-
-
+const Users = userModel(sequelize, DataTypes);
 
 
 
 
 module.exports = {
   sequelize,
-  userModel,
+  Users,
 };
