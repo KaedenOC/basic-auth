@@ -1,35 +1,35 @@
 'use strict';
 
 // 3rd Party Resources
-require('dotenv').config();
-const express = require('express');
+// require('dotenv').config();
+// const express = require('express');
 const bcrypt = require('bcrypt');
 const base64 = require('base-64');
-const { Sequelize, DataTypes } = require('sequelize');
+// const { Sequelize, DataTypes } = require('sequelize');
 
 // Prepare the express app
-const app = express();
+// const app = express();
 
 // Process JSON input and put the data on req.body
-app.use(express.json());
+// app.use(express.json());
 
 const PORT = process.env.PORT || 3002;
-const sequelize = new Sequelize(process.env.DATABASE_URL);
+// const sequelize = new Sequelize(process.env.DATABASE_URL);
 
 // Process FORM intput and put the data on req.body
-app.use(express.urlencoded({ extended: true }));
+// app.use(express.urlencoded({ extended: true }));
 
 // Create a Sequelize model
-const Users = sequelize.define('User', {
-  username: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-  password: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-});
+// const Users = sequelize.define('User', {
+//   username: {
+//     type: DataTypes.STRING,
+//     allowNull: false,
+//   },
+//   password: {
+//     type: DataTypes.STRING,
+//     allowNull: false,
+//   },
+// });
 
 // Signup Route -- create a new user
 // Two ways to test this route with httpie
