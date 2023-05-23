@@ -1,10 +1,10 @@
 'use strict';
 
 const express = require('express');
+const router = express.Router();
 const bcrypt = require('bcrypt');
 // const base64 = require('base-64');
 const { userModel } = require('./models');
-const router = express.Router();
 // const basicAuth = require('./middleware/basic');
 
 
@@ -27,13 +27,14 @@ const router = express.Router();
 
 
 
-router.post('/signup', async (req, res) => {
+router.post('/signup', async (req, response) => {
 
   try {
     req.body.password = await bcrypt.hash(req.body.password, 5);
     const record = await userModel.create(req.body);
-    res.status(201).json(record);
-  } catch (error) { res.status(403).send('Error Creating User'); }
+    // console.log('---record', req.body);
+    response.status(201).json(record);
+  } catch (error) { response.status(403).send('Error Creating User'); }
 });
 
 
